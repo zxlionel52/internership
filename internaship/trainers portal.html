@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trainer Portal - EduHub</title>
+    <link rel="stylesheet" type="text/css" href="trainers portal.css">
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+    <div class="portal-container">
+        <a href="Services.html" class="back-to-home">
+            <i class="fas fa-arrow-left"></i> Back to Services
+        </a>
+        <div class="portal-header">
+            <div class="portal-header-content">
+                <h1>
+                    <i class="fas fa-chalkboard-user"></i> Trainer Portal
+                </h1>
+                <p>Welcome back! Manage your classes, grades, and student assignments.</p>
+            </div>
+            <div class="user-profile">
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <button class="logout-btn" onclick="alert('Logged out successfully!'); window.location.href='index.html';">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="sidebar-main">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <h3><i class="fas fa-bars"></i> Menu</h3>
+                <ul class="sidebar-menu">
+                    <li><a href="#dashboard" class="menu-link active" onclick="showSection('dashboard')">
+                        <i class="fas fa-chart-line"></i> Dashboard
+                    </a></li>
+                    <li><a href="#classes" class="menu-link" onclick="showSection('classes')">
+                        <i class="fas fa-book"></i> My Classes
+                    </a></li>
+                    <li><a href="#students" class="menu-link" onclick="showSection('students')">
+                        <i class="fas fa-users"></i> Student List
+                    </a></li>
+                    <li><a href="#assignments" class="menu-link" onclick="showSection('assignments')">
+                        <i class="fas fa-tasks"></i> Assignments
+                    </a></li>
+                    <li><a href="#grading" class="menu-link" onclick="showSection('grading')">
+                        <i class="fas fa-star"></i> Grading
+                    </a></li>
+                    <li><a href="#attendance" class="menu-link" onclick="showSection('attendance')">
+                        <i class="fas fa-check-circle"></i> Attendance
+                    </a></li>
+                    <li><a href="#resources" class="menu-link" onclick="showSection('resources')">
+                        <i class="fas fa-file-upload"></i> Course Materials
+                    </a></li>
+                    <li><a href="#messages" class="menu-link" onclick="showSection('messages')">
+                        <i class="fas fa-envelope"></i> Messages
+                    </a></li>
+                    <li><a href="#profile" class="menu-link" onclick="showSection('profile')">
+                        <i class="fas fa-user-circle"></i> My Profile
+                    </a></li>
+                </ul>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <!-- Dashboard Section -->
+                <div id="dashboard" class="content-section active">
+                    <h2 class="section-title">
+                        <i class="fas fa-chart-line"></i> Dashboard
+                    </h2>
+
+                    <div class="notification-box">
+                        <i class="fas fa-bell"></i>
+                        <div>
+                            <strong>Welcome to your Trainer Portal!</strong>
+                            <p>You have 3 pending assignments to grade and 2 new messages from students.</p>
+                        </div>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <i class="fas fa-users"></i>
+                            <h3>245</h3>
+                            <p>Total Students</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-book"></i>
+                            <h3>5</h3>
+                            <p>Active Classes</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-tasks"></i>
+                            <h3>12</h3>
+                            <p>Pending Assignments</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-percent"></i>
+                            <h3>94%</h3>
+                            <p>Average Attendance</p>
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top: 3rem; margin-bottom: 1rem; color: var(--text-dark);">Recent Activity</h3>
+                    <div class="table-container">
+                        <table class="custom-table">
+                            <thead>
+                                <tr>
+                                    <th>Activity</th>
+                                    <th>Class</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Assignment Created</td>
+                                    <td>Biology 101</td>
+                                    <td>2026-04-28</td>
+                                    <td><span class="status-badge status-completed">Completed</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Grades Posted</td>
+                                    <td>Chemistry 102</td>
+                                    <td>2026-04-27</td>
+                                    <td><span class="status-badge status-completed">Completed</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Attendance Recorded</td>
+                                    <td>Physics 103</td>
+                                    <td>2026-04-26</td>
+                                    <td><span class="status-badge status-completed">Completed</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="classes" class="content-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-book"></i> My Classes
+                    </h2>
+
+                    <div class="table-container">
+                        <table class="custom-table">
+                            <thead>
+                                <tr>
+                                    <th>Class Name</th>
+                                    <th>Class ID</th>
+                                    <th>Students</th>
+                                    <th>Schedule</th>
+                                    <th>Room</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Biology 101</td>
+                                    <td>BIO-101-A</td>
+                                    <td>35</td>
+                                    <td>Mon, Wed, Fri 09:00 AM</td>
+                                    <td>Lab 102</td>
+                                    <td><a href="#" class="action-btn btn-view">View Details</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Chemistry 102</td>
+                                    <td>CHM-102-B</td>
+                                    <td>42</td>
+                                    <td>Tue, Thu 02:00 PM</td>
+                                    <td>Lab 105</td>
+                                    <td><a href="#" class="action-btn btn-view">View Details</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Physics 103</td>
+                                    <td>PHY-103-A</td>
+                                    <td>38</td>
+                                    <td>Mon, Wed, Fri 01:00 PM</td>
+                                    <td>Lab 110</td>
+                                    <td><a href="#" class="action-btn btn-view">View Details</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Environmental Science</td>
+                                    <td>ENV-105-C</td>
+                                    <td>40</td>
+                                    <td>Tue, Thu 10:00 AM</td>
+                                    <td>Classroom 205</td>
+                                    <td><a href="#" class="action-btn btn-view">View Details</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Lab Practicals</td>
+                                    <td>LAB-110-D</td>
+                                    <td>50</td>
+                                    <td>Saturday 03:00 PM</td>
+                                    <td>Lab 115</td>
+                                    <td><a href="#" class="action-btn btn-view">View Details</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="students" class="content-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-users"></i> Student List
+                    </h2>
+
+                    <div class="form-group-portal" style="margin-bottom: 2rem;">
+                        <label for="classFilter">Filter by Class:</label>
+                        <select id="classFilter" class="form-group-portal" style="width: auto; padding: 8px 15px;">
+                            <option>All Classes</option>
+                            <option>Biology 101</option>
+                            <option>Chemistry 102</option>
+                            <option>Physics 103</option>
+                        </select>
+                    </div>
+
+                    <div class="table-container">
+                        <table class="custom-table">
+                            <thead>
+                                <tr>
+                                    <th>Student ID</th>
+                                    <th>Student Name</th>
+                                    <th>Email</th>
+                                    <th>Class</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>STU-001</td>
+                                    <td>John Anderson</td>
+                                    <td>john@student.edu</td>
+                                    <td>Biology 101</td>
+                                    <td><span class="status-badge status-submitted">Active</span></td>
+                                    <td><a href="#" class="action-btn btn-view">View</a></td>
+                                </tr>
+                                <tr>
+                                    <td>STU-002</td>
+                                    <td>Sarah Johnson</td>
+                                    <td>sarah@student.edu</td>
+                                    <td>Chemistry 102</td>
+                                    <td><span class="status-badge status-submitted">Active</span></td>
+                                    <td><a href="#" class="action-btn btn-view">View</a></td>
+                                </tr>
+                                <tr>
+                                    <td>STU-003</td>
+                                    <td>Michael Smith</td>
+                                    <td>michael@student.edu</td>
+                                    <td>Physics 103</td>
+                                    <td><span class="status-badge status-submitted">Active</span></td>
+                                    <td><a href="#" class="action-btn btn-view">View</a></td>
+                                </tr>
+                                <tr>
+                                    <td>STU-004</td>
+                                    <td>Emily Davis</td>
+                                    <td>emily@student.edu</td>
+                                    <td>Biology 101</td>
+                                    <td><span class="status-badge status-submitted">Active</span></td>
+                                    <td><a href="#" class="action-btn btn-view">View</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="assignments" class="content-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-tasks"></i> Assignments
+                    </h2>
+
+                    <button class="btn-portal" onclick="showAssignmentForm()">
+                        <i class="fas fa-plus"></i> Create New Assignment
+                    </button>
+
+                    <div id="assignmentForm" style="display: none; background: var(--bg-light); padding: 20px; border-radius: 12px; margin: 2rem 0;">
+                        <h3>Create New Assignment</h3>
+                        <div class="form-group-portal">
+                            <label for="assignTitle">Assignment Title:</label>
+                            <input type="text" id="assignTitle" placeholder="e.g., Chapter 5 Quiz">
+                        </div>
+                        <div class="form-group-portal">
+                            <label for="assignClass">Select Class:</label>
+                            <select id="assignClass">
+                                <option>Biology 101</option>
+                                <option>Chemistry 102</option>
+                                <option>Physics 103</option>
+                            </select>
+                        </div>
+                        <div class="form-group-portal">
+                            <label for="assignDesc">Description:</label>
+                            <textarea id="assignDesc" rows="4" placeholder="Assignment details..."></textarea>
+                        </div>
+                        <div class="form-group-portal">
+                            <label for="dueDate">Due Date:</label>
+                            <input type="date" id="dueDate">
+                        </div>
+                        <button class="btn-portal" onclick="submitAssignment()">
+                            <i class="fas fa-paper-plane"></i> Post Assignment
+                        </button>
+                    </div>
+
+                    <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--text-dark);">Active Assignments</h3>
+                    <div class="table-container">
+                        <table class="custom-table">
+                            <thead>
+                                <tr>
+                                    <th>Assignment Title</th>
+                                    <th>Class</th>
+                                    <th>Created</th>
+                                    <th>Due Date</th>
+                                    <th>Submissions</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Chapter 5 Quiz</td>
+                                    <td>Biology 101</td>
+                                    <td>2026-04-25</td>
+                                    <td>2026-05-02</td>
+                                    <td>28/35</td>
+                                    <td><span class="status-badge status-in-progress">In Progress</span></td>
+                                    <td><a href="#" class="action-btn btn-grade">Grade</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Lab Report</td>
+                                    <td>Chemistry 102</td>
+                                    <td>2026-04-20</td>
+                                    <td>2026-04-27</td>
+                                    <td>42/42</td>
+                                    <td><span class="status-badge status-completed">Completed</span></td>
+                                    <td><a href="#" class="action-btn btn-view">View</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Project Submission</td>
+                                    <td>Physics 103</td>
+                                    <td>2026-04-22</td>
+                                    <td>2026-05-05</td>
+                                    <td>32/38</td>
+                                    <td><span class="status-badge status-in-progress">In Progress</span></td>
+                                    <td><a href="#" class="action-btn btn-grade">Grade</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Grading Section -->
+                <div id="grading" class="content-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-star"></i> Grading Center
+                    </h2>
+
+                    <div class="form-group-portal" style="margin-bottom: 2rem;">
+                        <label for="gradingClass">Select Class to Grade:</label>
+                        <select id="gradingClass" onchange="updateGradingTable()">
+                            <option value="">All Classes</option>
+                            <option value="bio">Biology 101</option>
+                            <option value="chem">Chemistry 102</option>
+                            <option value="phys">Physics 103</option>
+                        </select>
+                    </div>
+
+                    <div class="table-container">
+                        <table class="custom-table">
+                            <thead>
+                                <tr>
+                                    <th>Student Name</th>
+                                    <th>Assignment</th>
+                                    <th>Submission Date</th>
+                                    <th>Grade (out of 100)</th>
+                                    <th>Feedback</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>John Anderson</td>
+                                    <td>Chapter 5 Quiz</td>
+                                    <td>2026-04-28</td>
+                                    <td>85</td>
+                                    <td>Good work! Needs improvement in section 3.</td>
+                                    <td><a href="#" class="action-btn btn-edit">Edit</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Sarah Johnson</td>
+                                    <td>Lab Report</td>
+                                    <td>2026-04-26</td>
+                                    <td>92</td>
+                                    <td>Excellent detailed analysis!</td>
+                                    <td><a href="#" class="action-btn btn-edit">Edit</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Michael Smith</td>
+                                    <td>Project Submission</td>
+                                    <td>2026-04-29</td>
+                                    <td>78</td>
+                                    <td>Average work. Review concepts again.</td>
+                                    <td><a href="#" class="action-btn btn-edit">Edit</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="attendance" class="content-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-check-circle"></i> Attendance Management
+                    </h2>
+
+                    <div class="form-group-portal" style="margin-bottom: 2rem;">
+                        <label for="attendClass">Select Class:</label>
+                        <select id="attendClass">
+                            <option>Biology 101</option>
+                            <option>Chemistry 102</option>
+                            <option>Physics 103</option>
+                        </select>
+                    </div>
+
+                    <button class="btn-portal" onclick="markAttendance()">
+                        <i class="fas fa-check"></i> Mark Attendance Today
+                    </button>
+
+                    <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--text-dark);">Attendance Record</h3>
+                    <div class="table-container">
+                        <table class="custom-table">
+                            <thead>
+                                <tr>
+                                    <th>Student Name</th>
+                                    <th>Roll No.</th>
+                                    <th>Total Classes</th>
+                                    <th>Present</th>
+                                    <th>Absent</th>
+                                    <th>Percentage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>John Anderson</td>
+                                    <td>001</td>
+                                    <td>40</td>
+                                    <td>38</td>
+                                    <td>2</td>
+                                    <td><span class="status-badge status-completed">95%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Sarah Johnson</td>
+                                    <td>002</td>
+                                    <td>40</td>
+                                    <td>40</td>
+                                    <td>0</td>
+                                    <td><span class="status-badge status-completed">100%</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Michael Smith</td>
+                                    <td>003</td>
+                                    <td>40</td>
+                                    <td>35</td>
+                                    <td>5</td>
+                                    <td><span class="status-badge status-pending">87.5%</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="resources" class="content-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-file-upload"></i> Course Materials
+                    </h2>
+
+                    <button class="btn-portal" onclick="showUploadForm()">
+                        <i class="fas fa-plus"></i> Upload Course Material
+                    </button>
+
+                    <div id="uploadForm" style="display: none; background: var(--bg-light); padding: 20px; border-radius: 12px; margin: 2rem 0;">
+                        <h3>Upload Course Material</h3>
+                        <div class="form-group-portal">
+                            <label for="resourceClass">Class:</label>
+                            <select id="resourceClass">
+                                <option>Biology 101</option>
+                                <option>Chemistry 102</option>
+                                <option>Physics 103</option>
+                            </select>
+                        </div>
+                        <div class="form-group-portal">
+                            <label for="resourceTitle">Title:</label>
+                            <input type="text" id="resourceTitle" placeholder="e.g., Lecture Notes - Chapter 5">
+                        </div>
+                        <div class="form-group-portal">
+                            <label for="resourceFile">Select File:</label>
+                            <input type="file" id="resourceFile">
+                        </div>
+                        <button class="btn-portal" onclick="uploadResource()">
+                            <i class="fas fa-cloud-upload-alt"></i> Upload
+                        </button>
+                    </div>
+
+                    <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--text-dark);">Available Resources</h3>
+                    <div class="table-container">
+                        <table class="custom-table">
+                            <thead>
+                                <tr>
+                                    <th>Resource Title</th>
+                                    <th>Class</th>
+                                    <th>Type</th>
+                                    <th>Uploaded</th>
+                                    <th>Downloads</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Lecture Notes - Chapter 5</td>
+                                    <td>Biology 101</td>
+                                    <td>PDF</td>
+                                    <td>2026-04-25</td>
+                                    <td>145</td>
+                                    <td><a href="#" class="action-btn btn-view">Download</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Lab Manual 2026</td>
+                                    <td>Chemistry 102</td>
+                                    <td>PDF</td>
+                                    <td>2026-04-20</td>
+                                    <td>298</td>
+                                    <td><a href="#" class="action-btn btn-view">Download</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Experiment Videos</td>
+                                    <td>Physics 103</td>
+                                    <td>Video</td>
+                                    <td>2026-04-22</td>
+                                    <td>567</td>
+                                    <td><a href="#" class="action-btn btn-view">View</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="messages" class="content-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-envelope"></i> Messages
+                    </h2>
+
+                    <button class="btn-portal" onclick="showMessageForm()">
+                        <i class="fas fa-pen"></i> Compose Message
+                    </button>
+
+                    <div id="messageForm" style="display: none; background: var(--bg-light); padding: 20px; border-radius: 12px; margin: 2rem 0;">
+                        <h3>Send Message</h3>
+                        <div class="form-group-portal">
+                            <label for="msgRecipient">To:</label>
+                            <select id="msgRecipient">
+                                <option>All Students in Class</option>
+                                <option>Select Individual Student</option>
+                            </select>
+                        </div>
+                        <div class="form-group-portal">
+                            <label for="msgSubject">Subject:</label>
+                            <input type="text" id="msgSubject" placeholder="Message subject">
+                        </div>
+                        <div class="form-group-portal">
+                            <label for="msgBody">Message:</label>
+                            <textarea id="msgBody" rows="5" placeholder="Write your message..."></textarea>
+                        </div>
+                        <button class="btn-portal" onclick="sendMessage()">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </div>
+
+                    <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--text-dark);">Messages</h3>
+                    <div class="table-container">
+                        <table class="custom-table">
+                            <thead>
+                                <tr>
+                                    <th>From</th>
+                                    <th>Subject</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>John Anderson</td>
+                                    <td>Question regarding Assignment</td>
+                                    <td>2026-04-28</td>
+                                    <td><span class="status-badge status-submitted">New</span></td>
+                                    <td><a href="#" class="action-btn btn-view">Read</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Sarah Johnson</td>
+                                    <td>Extension Request</td>
+                                    <td>2026-04-27</td>
+                                    <td><span class="status-badge status-submitted">New</span></td>
+                                    <td><a href="#" class="action-btn btn-view">Read</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Admin</td>
+                                    <td>Grade Submission Deadline</td>
+                                    <td>2026-04-26</td>
+                                    <td><span class="status-badge status-completed">Read</span></td>
+                                    <td><a href="#" class="action-btn btn-view">Read</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Profile Section -->
+                <div id="profile" class="content-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-user-circle"></i> My Profile
+                    </h2>
+
+                    <div style="background: var(--bg-light); padding: 30px; border-radius: 12px; max-width: 600px;">
+                        <h3 style="margin-bottom: 2rem; color: var(--text-dark);">Personal Information</h3>
+                        
+                        <div class="form-group-portal">
+                            <label>Full Name:</label>
+                            <input type="text" value="Dr. Robert Wilson" readonly>
+                        </div>
+
+                        <div class="form-group-portal">
+                            <label>Email:</label>
+                            <input type="email" value="robert.wilson@eduhub.edu" readonly>
+                        </div>
+
+                        <div class="form-group-portal">
+                            <label>Phone:</label>
+                            <input type="tel" value="+1 (555) 123-4567" readonly>
+                        </div>
+
+                        <div class="form-group-portal">
+                            <label>Employee ID:</label>
+                            <input type="text" value="EMP-2020-001" readonly>
+                        </div>
+
+                        <div class="form-group-portal">
+                            <label>Department:</label>
+                            <input type="text" value="Science - Biology" readonly>
+                        </div>
+
+                        <div class="form-group-portal">
+                            <label>Qualification:</label>
+                            <input type="text" value="Ph.D. in Biology" readonly>
+                        </div>
+
+                        <div class="form-group-portal">
+                            <label>Join Date:</label>
+                            <input type="text" value="2020-08-15" readonly>
+                        </div>
+
+                        <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--text-dark);">Change Password</h3>
+
+                        <div class="form-group-portal">
+                            <label for="currentPass">Current Password:</label>
+                            <input type="password" id="currentPass" placeholder="Enter current password">
+                        </div>
+
+                        <div class="form-group-portal">
+                            <label for="newPass">New Password:</label>
+                            <input type="password" id="newPass" placeholder="Enter new password">
+                        </div>
+
+                        <div class="form-group-portal">
+                            <label for="confirmPass">Confirm Password:</label>
+                            <input type="password" id="confirmPass" placeholder="Confirm new password">
+                        </div>
+
+                        <button class="btn-portal" onclick="changePassword()">
+                            <i class="fas fa-lock"></i> Update Password
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to show selected section and hide others
+        function showSection(sectionId) {
+            // Get all sections
+            var allSections = document.querySelectorAll('.content-section');
+            
+            // Hide all sections
+            for (var i = 0; i < allSections.length; i++) {
+                allSections[i].classList.remove('active');
+            }
+
+            // Get all menu links
+            var allLinks = document.querySelectorAll('.menu-link');
+            
+            // Remove active class from all links
+            for (var i = 0; i < allLinks.length; i++) {
+                allLinks[i].classList.remove('active');
+            }
+
+            // Show the selected section
+            document.getElementById(sectionId).classList.add('active');
+
+            // Add active class to the clicked link
+            event.target.classList.add('active');
+        }
+
+        // Function to toggle assignment form
+        function showAssignmentForm() {
+            var form = document.getElementById('assignmentForm');
+            if (form.style.display === 'none') {
+                form.style.display = 'block';
+            } else {
+                form.style.display = 'none';
+            }
+        }
+
+        // Function to submit assignment
+        function submitAssignment() {
+            alert('Assignment posted successfully!');
+            document.getElementById('assignmentForm').style.display = 'none';
+        }
+
+        // Function to toggle upload form
+        function showUploadForm() {
+            var form = document.getElementById('uploadForm');
+            if (form.style.display === 'none') {
+                form.style.display = 'block';
+            } else {
+                form.style.display = 'none';
+            }
+        }
+
+        // Function to upload resource
+        function uploadResource() {
+            alert('Course material uploaded successfully!');
+            document.getElementById('uploadForm').style.display = 'none';
+        }
+
+        // Function to toggle message form
+        function showMessageForm() {
+            var form = document.getElementById('messageForm');
+            if (form.style.display === 'none') {
+                form.style.display = 'block';
+            } else {
+                form.style.display = 'none';
+            }
+        }
+
+        // Function to send message
+        function sendMessage() {
+            alert('Message sent successfully!');
+            document.getElementById('messageForm').style.display = 'none';
+        }
+
+        // Function to mark attendance
+        function markAttendance() {
+            alert('Attendance marked for today!');
+        }
+
+        // Function to update grading table
+        function updateGradingTable() {
+            alert('Grading table updated for selected class!');
+        }
+
+        // Function to change password
+        function changePassword() {
+            var newPass = document.getElementById('newPass').value;
+            var confirmPass = document.getElementById('confirmPass').value;
+
+            if (newPass === '' || confirmPass === '') {
+                alert('Please fill in all password fields');
+                return;
+            }
+
+            if (newPass !== confirmPass) {
+                alert('Passwords do not match!');
+                return;
+            }
+
+            alert('Password changed successfully!');
+        }
+    </script>
+</body>
+</html>

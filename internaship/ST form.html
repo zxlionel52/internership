@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STUDENT REGISTRATION FORM</title>
+    <link rel="stylesheet" type="text/css" href="ST form.css">
+</head>
+<body>
+    <div id="l5">
+        <span id="l6">WELCOME TO GS KABARE</span>
+        <span id="l7">
+            ⇶
+        </span> 
+    </div>
+    <div id="l8"><br><br><br><br>
+        <a href="index.html">HOME</a><br><br><br>
+        <a href="About us.html">ABOUT US</a><br><br><br>
+        <a href="Services.html">SERVICES</a><br><br><br>
+        <a href="">ACADEMICS</a><br><br><br>
+        <a href="">ADMISSION</a><br><br><br>
+        <a href="">GALLERY</a><br><br><br>
+        <a href="">CONTACT US</a><br><br><br>
+        <input type="button" value="LOGIN" id="l9">
+    </div>
+    
+    <div id="l1">
+        <h1>STUDENT REGISTRATION FORM</h1>
+        <form  action="index.html" method="post" id="l2">
+            <span id="l3">
+            NAMES:<br><br>
+            <input type="text" placeholder="Enter full names please" id="op" class="l1"><br><br>
+            BIRTHDAY:<br><br>
+            <input type="date" id="ap" class="l1"><br><br>
+            AGE:<br><br>
+            <input type="number" placeholder="Enter your age please" id="up" class="l1"><br><br>
+            GENDER:<br>
+             <input type="radio" name="gender" id="yp">MALE<br>
+              <input type="radio" name="gender" id="yp">FEMALE<br><br>
+            FORMER SCHOOL:<br><br>
+            <input type="text" placeholder="name of the school you came from please" id="ep" class="l1"><br><br>
+            </span>
+            <span id="l4">
+            PROVINCE:<br><br>
+            <select class="l1">
+                <option>select the province you came from</option>
+                <option>NORTHERN PROVINCE</option>
+                <option>SOUTHERN PROVINCE</option>
+                <option>EASTERN PROVINCE</option>
+                <option>WESTERN PROVINCE</option>
+                <option>KIGALI CITY</option>
+            </select><br><br>
+            DISTRICT:<br><br>
+            <input type="text" placeholder="Enter your district please" id="rp" class="l1"><br><br>
+            SECTOR:<br><br>
+              <input type="text" placeholder="Enter your sector please" id="ip" class="l1"><br><br>
+              PARENTS:<br>
+               <input type="checkbox" id="xp" >FATHER<br>
+                <input type="checkbox" id="xp" >MOTHER
+                 <input type="checkbox" id="xp">NONE<br><br>
+                PARENTS NUMBER:<br><br>
+                 <input type="number" placeholder="your parents phone number please" id="zp" class="l1"><br><br> 
+                PARENTS ID:<br><br>
+                 <input type="number" placeholder="your parents id please" id="mp" class="l1"><br><br>
+                 
+</span>
+<input type="button" value="REGISTER NOW" id="cp" class="l2" onclick="li()"> <input type="reset" value="Clear all" id="cp" class="l3">
+<input type="file" id="fp" class="l11">
+        </form>
+        
+        <div id="sp"></div>
+    </div>
+    <div id="l10">&copy;RIGHT@\\GS KABARE</div>
+    <script>
+function li() {
+    const name = document.getElementById("op").value.trim();
+    const dob = document.getElementById("ap").value;
+    const age = document.getElementById("up").value;
+    const school = document.getElementById("ep").value.trim();
+    const district = document.getElementById("rp").value.trim();
+    const sector = document.getElementById("ip").value.trim();
+    const parentPhone = document.getElementById("zp").value;
+    const parentId = document.getElementById("mp").value;
+
+    let gender = document.querySelector('input[name="gender"]:checked');
+    let messageBox = document.getElementById("sp");
+
+    // Show message box
+    messageBox.style.display = "block";
+
+    // Validation
+    if (!name || !dob || !age || !school || !district || !sector || !parentPhone || !parentId) {
+        messageBox.style.background = "red";
+        messageBox.innerHTML = "Please fill all required fields.";
+        return false;
+    }
+
+    if (!gender) {
+        messageBox.style.background = "red";
+        messageBox.innerHTML = "Please select gender.";
+        return false;
+    }
+
+    if (age < 5 || age > 30) {
+        messageBox.style.background = "red";
+        messageBox.innerHTML = "Age must be between 5 and 30.";
+        return false;
+    }
+
+    if (parentPhone.length < 10) {
+        messageBox.style.background = "red";
+        messageBox.innerHTML = "Enter a valid phone number.";
+        return false;
+    }
+
+    // Success
+    messageBox.style.background = "green";
+    messageBox.innerHTML = `
+        Registration Successful!<br>
+        Name: ${name}<br>
+        Age: ${age}<br>
+        please contact us on 0788888888 for more details.
+    `;
+
+    // Auto hide after 5 seconds
+    setTimeout(() => {
+        messageBox.style.display = "none";
+    }, 5000);
+
+    return true;
+}
+</script>
+</body>
+</html>
